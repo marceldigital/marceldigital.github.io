@@ -127,6 +127,21 @@ the robots meta tag to the layout.</p>
 If you do not already have a way to create an XML sitemap, see Marcel Digital's package for this 
 <a href="https://www.nuget.org/packages/MarcelDigital.UmbracoExtensions.XmlSitemap/">here</a>. Setting this property
 to true should tell the XML sitemap generator to omit this content from the sitemap.</p>
+
+<p>Using our XML sitemap package, just add the following filter to the filter chain in the configuration file located at <code>Config/xmlSitemap.config</code>. 
+This will remove any document types that have been flagged using the 'Hide from Xml Sitemap' property.</p>
+
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">umbracoXmlSitemap</span>&gt;
+  &lt;<span class="pl-ent">filters</span>&gt;
+    ...
+    &lt;<span class="pl-ent">filter</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>MarcelDigital.UmbracoExtensions.XmlSitemap.Filters.PropertiesFilter, MarcelDigital.UmbracoExtensions.XmlSitemap<span class="pl-pds">"</span></span>&gt;
+      &lt;<span class="pl-ent">properties</span>&gt;
+        &lt;<span class="pl-ent">property</span> <span class="pl-e">alias</span>=<span class="pl-s"><span class="pl-pds">"</span>seoXmlSitemapHide<span class="pl-pds">"</span></span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>false<span class="pl-pds">"</span></span> /&gt;
+      &lt;/<span class="pl-ent">properties</span>&gt;
+    &lt;/<span class="pl-ent">filter</span>&gt;
+    ...
+  &lt;/<span class="pl-ent">filters</span>&gt;
+&lt;/<span class="pl-ent">umbracoXmlSitemap</span>&gt;</pre></div>
       </section>
     </div>
 
